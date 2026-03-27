@@ -806,7 +806,6 @@ img {
 .subheadline,
 .hero-support {
     font-size: 1.2rem;
-    /* Matches design better */
     color: var(--text-main);
     width: 100%;
     margin: 0 auto;
@@ -1952,7 +1951,6 @@ footer {
         gap: 2rem;
         width: 100%;
         min-height: auto !important;
-        /* Remove desktop min-height */
     }
 
     .feature-item {
