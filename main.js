@@ -194,22 +194,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
         } else {
-            // Otimização para Mobile
+            // Otimização ULTRA para Mobile: ZERO animação de path/stroke, apenas opacidade
+            // Como criamos os paths escondidos (dashoffset), temos que "mostrar" eles de uma vez.
+            gsap.set(".energy-ray, .grid-line", { strokeDashoffset: 0 });
+
             heroTl.to(".energy-ray", {
-                strokeDashoffset: -1500,
                 opacity: 0.6,
                 duration: 2,
-                stagger: { amount: 0.3 }, 
+                stagger: false, 
                 ease: "power2.out"
             }, 0.5);
 
             heroTl.to(".energy-ray", { opacity: 0, duration: 1 }, 1.5);
 
             heroTl.to(".grid-line", {
-                strokeDashoffset: 0,
-                duration: 2,
                 opacity: 0.4,
-                stagger: { amount: 0.5 },
+                duration: 2,
+                stagger: false,
                 ease: "power2.out"
             }, 0.5);
             

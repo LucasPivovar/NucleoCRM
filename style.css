@@ -531,10 +531,9 @@ img {
 .energy-ray {
     stroke: #8C73ED;
     stroke-width: 4px;
-    /* Aumentei para manter visão limpa sem usar o pesado drop-shadow */
     stroke-linecap: round;
     opacity: 0;
-    will-change: stroke-dashoffset, opacity;
+    will-change: opacity;
 }
 
 /* Word Splitting Animation Helper */
