@@ -107,7 +107,6 @@ img {
 @media (max-width: 768px) {
     :root {
         --section-padding: 2.5rem 0;
-        /* Even smaller for mobile */
     }
 }
 
@@ -208,7 +207,6 @@ img {
         position: relative;
     }
 
-    /* Hide Original Desktop Nav */
     .navbar {
         display: none !important;
     }
@@ -221,11 +219,9 @@ img {
         left: 0;
         width: 100%;
         padding: 0.8rem 0.6rem;
-        /* Delimit space from the outside */
         box-sizing: border-box !important;
         z-index: 1000;
         pointer-events: none;
-        /* Let clicks pass through container */
     }
 
     .navbar-mobile {
@@ -235,7 +231,6 @@ img {
         margin: 0 auto !important;
         box-sizing: border-box !important;
         padding: 1.4rem 1.4rem;
-        /* Further reduced slightly as requested */
         background: rgba(148, 149, 148, 0.25);
         border: 1px solid rgba(255, 255, 255, 0.06);
         border-radius: 12px;
@@ -251,7 +246,6 @@ img {
         display: flex;
         align-items: center;
         height: 28px;
-        /* Standard mobile height */
     }
 
     .logo-img {
@@ -410,7 +404,6 @@ img {
     display: flex;
     align-items: center;
     height: 32px;
-    /* Standard desktop height */
 }
 
 .logo-img {
@@ -421,7 +414,6 @@ img {
 
 .hero-logo-img {
     height: 90px;
-    /* Large, clear branding for the hero section */
     width: auto;
     display: block;
     margin-bottom: 2rem;
@@ -431,7 +423,6 @@ img {
 @media (max-width: 1024px) {
     .hero-logo-img {
         height: 60px;
-        /* Scaled down for mobile */
         margin-bottom: 1.5rem;
     }
 }
@@ -489,8 +480,7 @@ img {
 
 /* Cinematic Hero Section */
 .hero {
-    height: 400vh;
-    /* Increased height for the 4-stage animation */
+    height: 410vh;
     background: #ffffff;
     position: relative;
     overflow: visible;
@@ -499,7 +489,6 @@ img {
 
 .hero.universe-mode {
     background-color: #010409;
-    /* Deep Terminal Black */
 }
 
 .hero-canvas-container {
@@ -523,7 +512,6 @@ img {
 .grid-line {
     stroke: rgba(107, 76, 230, 0.25);
     stroke-width: 0.8px;
-    /* Dash handled by JS dynamically based on spacing */
 }
 
 .grid-dot {
@@ -618,7 +606,7 @@ img {
     transform-origin: left center;
 }
 
-/* Scroll Hint — sits above sweep panels, visible on white bg */
+/* SEÇÃO HERO - SCROLL HINT */
 .scroll-hint {
     position: absolute;
     bottom: 8rem;
@@ -696,7 +684,7 @@ img {
 }
 
 
-/* Hero Container: full width/height flex centering — z:1 so panels (z:2) cover text initially */
+/* SEÇÃO HERO - CONTEÚDO */
 
 .hero-container {
     height: 100%;
@@ -709,10 +697,9 @@ img {
     justify-content: center;
     pointer-events: none;
     z-index: 1;
-    /* panels z:2 will cover this — text is revealed as panels shrink away */
 }
 
-/* Hero Reveal Wrap — centered flex column, always white (shows on dark bg when panels clear) */
+/* SEÇÃO HERO - REVEAL WRAP */
 .hero-reveal-wrap {
     display: flex;
     flex-direction: column;
@@ -724,7 +711,6 @@ img {
     padding: 0 4rem;
     pointer-events: auto;
     color: #ffffff;
-    /* Always white — content only shows on dark background */
 }
 
 .hero-reveal-wrap h1,
@@ -1445,7 +1431,6 @@ img {
     height: 35px;
     width: auto;
     opacity: 1;
-    /* Restored original color/opacity */
 }
 
 /* Animations Reveal */
@@ -1525,7 +1510,6 @@ img {
 
     .hero-reveal-wrap {
         padding: 0 1rem !important;
-        /* Reduced from 4rem to give space on mobile */
         text-align: center;
         display: flex;
         flex-direction: column;
@@ -1535,7 +1519,6 @@ img {
     .hero-btns {
         display: flex;
         flex-direction: row !important;
-        /* Force side-by-side */
         flex-wrap: nowrap;
         justify-content: center;
         gap: 0.5rem !important;
@@ -1544,7 +1527,6 @@ img {
 
     .hero-btns .btn {
         padding: 0.8rem 0.6rem !important;
-        /* Compact buttons for side-by-side fit */
         font-size: 0.75rem !important;
         white-space: nowrap;
         flex: 1 1 auto;
@@ -1571,7 +1553,6 @@ img {
 
     .diff-highlight {
         padding: 1rem !important;
-        /* Reduce padding from 32px to 16px as requested */
         font-size: 1.1rem !important;
     }
 
@@ -1611,21 +1592,18 @@ img {
     margin: 0 !important;
     text-align: center !important;
     max-width: 90vw;
-    /* Prevent screen overflow */
     word-wrap: break-word;
 }
 
 /* --- FEATURES CAROUSEL (SECTION 5: PINNED SHOWCASE) --- */
 .features-carousel {
     margin-top: 40px !important;
-    /* Added 40px gap from automations section as requested */
 }
 
 .container-features {
     width: 100%;
     margin: 0 auto;
     padding: 0 6rem;
-    /* High side padding for full-width comfort */
 }
 
 .features-wrapper {
@@ -1633,7 +1611,6 @@ img {
     justify-content: space-between;
     align-items: flex-start;
     gap: 3rem;
-    /* Reduced to accommodate progress bar column */
     position: relative;
 }
 
@@ -1648,7 +1625,6 @@ img {
 .features-right {
     flex: 1;
     position: relative;
-    /* positioning context for scroll-trapezoid */
     top: 0;
     height: 100vh;
     display: flex;
@@ -1682,7 +1658,6 @@ img {
 .features-headline {
     font-size: clamp(2.5rem, 6vw, 4.5rem);
     margin-bottom: 25vh;
-    /* Standardizing initial vertical spacing */
     line-height: 1;
     color: var(--text-bold);
     letter-spacing: -0.05em;
@@ -1835,11 +1810,9 @@ img {
 .steps-progress-container {
     position: absolute;
     top: 91px;
-    /* Perfectly centered with the 54px circles (64px padding + 27px radius) */
     left: 15%;
     right: 15%;
     height: 1px;
-    /* Thinner line */
     background: rgba(107, 76, 230, 0.1);
     z-index: 0;
 }
@@ -1851,7 +1824,6 @@ img {
     transform-origin: left;
     transform: scaleX(0);
     opacity: 0.4;
-    /* Subtle progress */
 }
 
 .step-card {
@@ -1865,7 +1837,6 @@ img {
     width: 54px;
     height: 54px;
     background: var(--bg-white);
-    /* Opaque background to hide the progress line */
     border: 1px solid rgba(107, 76, 230, 0.3);
     color: var(--primary);
     border-radius: 50%;
@@ -1877,7 +1848,6 @@ img {
     font-size: 1.1rem;
     position: relative;
     z-index: 2;
-    /* Sits above the line */
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
 }
 
@@ -1885,7 +1855,6 @@ img {
 .final-cta {
     background-color: var(--primary);
     padding: 200px 0 !important;
-    /* desktop */
     position: relative;
     overflow: hidden;
     margin-bottom: 0 !important;
@@ -1945,12 +1914,10 @@ footer {
     .features-right,
     .features-pagination-wrapper {
         display: contents;
-        /* Allows all children to be ordered directly by the main wrapper */
     }
 
     .features-carousel {
         margin-top: 0 !important;
-        /* Spacing handled by global .section-padding rule */
         padding: 40px 0 !important;
     }
 
@@ -1958,31 +1925,26 @@ footer {
         order: 1;
         margin-bottom: 0.5rem !important;
         text-align: left;
-        /* Standard h2 rule applies here */
     }
 
     .feature-visual {
         order: 2;
         height: 30vh;
-        /* Further reduced to minimize gap */
         border-radius: 12px;
         position: relative;
         overflow: hidden;
         margin-bottom: 0.5rem;
-        /* Tightened */
     }
 
     .feature-slide img {
         height: 100%;
         width: 100%;
         object-fit: contain;
-        /* Ensure images are fully visible and not blank */
         border-radius: 12px;
     }
 
     .feat-pagination {
         order: 3;
-        /* Numbers come after photo */
         display: flex;
         gap: 1rem;
         margin: 0.5rem 0;
@@ -2002,18 +1964,15 @@ footer {
 
     .feature-item {
         flex: 0 0 85%;
-        /* Shows 85% of active, 15% of next item peeks */
         width: 85%;
         flex-shrink: 0;
         min-width: 0;
         padding: 0 !important;
-        /* Tightened padding */
         text-align: left;
         opacity: 0.3;
         transition: opacity 0.4s ease;
         display: block !important;
         min-height: auto !important;
-        /* REMOVE THE GIANT 70vh GAP */
     }
 
     .feature-item.active-mobile {
@@ -2033,14 +1992,12 @@ footer {
 
     .feat-progress-bar {
         order: 5;
-        /* Progress bar at the absolute bottom */
         width: 100%;
         height: 2px;
         background: #f1f5f9;
         position: relative;
         overflow: hidden;
         margin: 1rem 0 0 0;
-        /* Tightened */
     }
 
     .feat-progress-fill {
@@ -2061,7 +2018,6 @@ footer {
         gap: 0.5rem;
         z-index: 50;
         pointer-events: auto;
-        /* ALLOW CLICKS */
     }
 
     .features-right {
@@ -2082,19 +2038,15 @@ footer {
 
     .feat-page-num {
         font-family: var(--font-body);
-        /* More modern look like in photo */
         font-weight: 700;
         font-size: 0.85rem;
-        /* Smaller numbers */
         color: #e2e8f0;
-        /* Lighter gray */
         cursor: pointer;
         letter-spacing: 0.05em;
     }
 
     .feat-page-num.active {
         color: #94a3b8;
-        /* Darker silver/gray for active */
     }
 
     .how-it-works .steps-grid {
