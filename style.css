@@ -229,10 +229,9 @@ img {
         margin: 0 auto !important;
         box-sizing: border-box !important;
         padding: 1.4rem 1.4rem;
-        background: rgba(255, 255, 255, 0.8);
+        background: #ffffff;
         border: 1px solid rgba(0, 0, 0, 0.06);
         border-radius: 12px;
-        backdrop-filter: blur(14px);
         box-shadow: 0 4px 25px rgba(0, 0, 0, 0.08);
         display: flex;
         justify-content: space-between;
@@ -411,7 +410,6 @@ img {
     width: auto;
     display: block;
     margin-bottom: 2rem;
-    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.5));
 }
 
 @media (max-width: 1024px) {
@@ -481,7 +479,7 @@ img {
 }
 
 .hero.universe-mode {
-    background-color: #010409;
+    background-color: #01060f;
 }
 
 .hero-canvas-container {

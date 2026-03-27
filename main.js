@@ -176,49 +176,27 @@ document.addEventListener('DOMContentLoaded', () => {
         heroTl.to(".hero-sweep-left", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
         heroTl.to(".hero-sweep-right", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
 
-        if (isDesktop) {
-            heroTl.to(".energy-ray", {
-                strokeDashoffset: -1500,
-                opacity: 1,
-                duration: 2,
-                stagger: { amount: 0.5, from: "random" },
-                ease: "power2.out"
-            }, 0.5);
+        // Animação unificada: raios de energia
+        heroTl.to(".energy-ray", {
+            strokeDashoffset: -1500,
+            opacity: 1,
+            duration: 2,
+            stagger: { amount: 0.5, from: "random" },
+            ease: "power2.out"
+        }, 0.5);
 
-            heroTl.to(".energy-ray", { opacity: 0, duration: 1.5 }, 1.5);
+        heroTl.to(".energy-ray", { opacity: 0, duration: 1.5 }, 1.5);
 
-            heroTl.to(".grid-line", {
-                strokeDashoffset: 0,
-                duration: 3,
-                stagger: { amount: 2, from: "random" },
-                ease: "power2.inOut"
-            }, 0.5);
+        // Animação unificada: desenhando a grid (quadrados)
+        heroTl.to(".grid-line", {
+            strokeDashoffset: 0,
+            duration: 3,
+            stagger: { amount: 2, from: "random" },
+            ease: "power2.inOut"
+        }, 0.5);
 
-            heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
-        } else {
-            // Otimização para Mobile: Animação dos quadrados (grid) ativa, mas raios de energia leves
-            gsap.set(".energy-ray", { strokeDashoffset: 0 });
-
-            heroTl.to(".energy-ray", {
-                opacity: 0.6,
-                duration: 2,
-                stagger: false, 
-                ease: "power2.out"
-            }, 0.5);
-
-            heroTl.to(".energy-ray", { opacity: 0, duration: 1 }, 1.5);
-
-            // Trazendo de volta o efeito de "desenhar os quadrados", mas focado em poucos elementos (sem travar)
-            heroTl.to(".grid-line", {
-                strokeDashoffset: 0,
-                opacity: 0.35,
-                duration: 2.5,
-                stagger: { amount: 0.8 },
-                ease: "power2.inOut"
-            }, 0.5);
-            
-            heroTl.to(".scatter-dot", { opacity: 0.6, duration: 1.5 }, 1.0);
-        }
+        // Animação unificada: pontos nas interseções
+        heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
 
         heroTl.to("#hero-text-content", { opacity: 1, duration: 1.2, ease: "power3.out" }, 2.2);
 
