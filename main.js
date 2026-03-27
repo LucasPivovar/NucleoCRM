@@ -17,9 +17,11 @@ document.addEventListener('DOMContentLoaded', () => {
     gsap.registerPlugin(ScrollTrigger);
 
 
+    const isMobileDevice = window.innerWidth <= 1024;
+
     const gridLinesGroup = document.getElementById('grid-lines');
     const gridDotsGroup = document.getElementById('grid-dots');
-    const spacing = 50;
+    const spacing = isMobileDevice ? 100 : 50;
     const rows = Math.floor(1000 / spacing);
     const cols = Math.floor(1000 / spacing);
 
@@ -70,7 +72,8 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    for (let i = 0; i < 40; i++) {
+    const numDots = isMobileDevice ? 15 : 40;
+    for (let i = 0; i < numDots; i++) {
         const cx = Math.floor(random(0, cols)) * spacing;
         const cy = Math.floor(random(0, rows)) * spacing;
 
@@ -83,7 +86,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const raysGroup = document.getElementById('energy-rays');
-    const numRays = 40;
+    const numRays = isMobileDevice ? 15 : 40;
     for (let i = 0; i < numRays; i++) {
         const radius = 45;
         const spread = 1500;
@@ -114,7 +117,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // SEÇÃO HERO - CURSOR
     const explorerCursor = document.getElementById('explorer-cursor');
 
-    if (explorerCursor) {
+    if (explorerCursor && !isMobileDevice) {
         const pos = { x: window.innerWidth / 2, y: window.innerHeight / 2 };
         const mouse = { x: pos.x, y: pos.y };
 
@@ -136,53 +139,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // SEÇÃO HERO - TIMELINE
-    const heroTl = gsap.timeline({
-        scrollTrigger: {
-            trigger: ".hero",
-            start: "top top",
-            end: "bottom bottom",
-            scrub: 0.6,
-            pin: ".hero-sticky-wrapper",
-            pinSpacing: false,
-            onUpdate: (self) => {
-                const prog = self.progress;
-                if (prog > 0.15) {
-                    document.querySelector('.hero').classList.add('universe-mode');
-                } else {
-                    document.querySelector('.hero').classList.remove('universe-mode');
-                }
-            }
-        }
-    });
-
-    // Stage 1: Atom fades out
-    heroTl.to("#atom-anchor", { opacity: 0, duration: 1 }, 0);
-
-    // Stage 2: SYNCED RAYS, SWEEP, AND GRID
-    heroTl.to(".hero-sweep-left", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
-    heroTl.to(".hero-sweep-right", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
-
-    heroTl.to(".energy-ray", {
-        strokeDashoffset: -1500,
-        opacity: 1,
-        duration: 2,
-        stagger: { amount: 0.5, from: "random" },
-        ease: "power2.out"
-    }, 0.5);
-
-    heroTl.to(".energy-ray", { opacity: 0, duration: 1.5 }, 1.5);
-
-    heroTl.to(".grid-line", {
-        strokeDashoffset: 0,
-        duration: 3,
-        stagger: { amount: 2, from: "random" },
-        ease: "power2.inOut"
-    }, 0.5);
-
-    heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
-    heroTl.to("#hero-text-content", { opacity: 1, duration: 1.2, ease: "power3.out" }, 2.2);
-
     const mm = gsap.matchMedia();
 
     mm.add({
@@ -190,6 +146,77 @@ document.addEventListener('DOMContentLoaded', () => {
         isMobile: "(max-width: 1024px)"
     }, (context) => {
         let { isDesktop, isMobile } = context.conditions;
+
+        // SEÇÃO HERO - TIMELINE
+        const heroTl = gsap.timeline({
+            scrollTrigger: {
+                trigger: ".hero",
+                start: "top top",
+                end: "bottom bottom",
+                scrub: isMobile ? true : 0.6,
+                pin: ".hero-sticky-wrapper",
+                pinSpacing: false,
+                onUpdate: (self) => {
+                    const prog = self.progress;
+                    if (prog > 0.15) {
+                        document.querySelector('.hero').classList.add('universe-mode');
+                    } else {
+                        document.querySelector('.hero').classList.remove('universe-mode');
+                    }
+                }
+            }
+        });
+
+        // Stage 1: Atom fades out
+        heroTl.to("#atom-anchor", { opacity: 0, duration: 1 }, 0);
+
+        // Stage 2: SYNCED RAYS, SWEEP, AND GRID
+        heroTl.to(".hero-sweep-left", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
+        heroTl.to(".hero-sweep-right", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
+
+        if (isDesktop) {
+            heroTl.to(".energy-ray", {
+                strokeDashoffset: -1500,
+                opacity: 1,
+                duration: 2,
+                stagger: { amount: 0.5, from: "random" },
+                ease: "power2.out"
+            }, 0.5);
+
+            heroTl.to(".energy-ray", { opacity: 0, duration: 1.5 }, 1.5);
+
+            heroTl.to(".grid-line", {
+                strokeDashoffset: 0,
+                duration: 3,
+                stagger: { amount: 2, from: "random" },
+                ease: "power2.inOut"
+            }, 0.5);
+
+            heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
+        } else {
+            // Otimização para Mobile
+            heroTl.to(".energy-ray", {
+                strokeDashoffset: -1500,
+                opacity: 0.6,
+                duration: 2,
+                stagger: { amount: 0.3 }, 
+                ease: "power2.out"
+            }, 0.5);
+
+            heroTl.to(".energy-ray", { opacity: 0, duration: 1 }, 1.5);
+
+            heroTl.to(".grid-line", {
+                strokeDashoffset: 0,
+                duration: 2,
+                opacity: 0.4,
+                stagger: { amount: 0.5 },
+                ease: "power2.out"
+            }, 0.5);
+            
+            heroTl.to(".scatter-dot", { opacity: 0.6, duration: 1.5 }, 1.0);
+        }
+
+        heroTl.to("#hero-text-content", { opacity: 1, duration: 1.2, ease: "power3.out" }, 2.2);
 
         if (isDesktop) {
             ScrollTrigger.create({
