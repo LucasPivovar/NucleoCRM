@@ -194,9 +194,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
             heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
         } else {
-            // Otimização ULTRA para Mobile: ZERO animação de path/stroke, apenas opacidade
-            // Como criamos os paths escondidos (dashoffset), temos que "mostrar" eles de uma vez.
-            gsap.set(".energy-ray, .grid-line", { strokeDashoffset: 0 });
+            // Otimização para Mobile: Animação dos quadrados (grid) ativa, mas raios de energia leves
+            gsap.set(".energy-ray", { strokeDashoffset: 0 });
 
             heroTl.to(".energy-ray", {
                 opacity: 0.6,
@@ -207,11 +206,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
             heroTl.to(".energy-ray", { opacity: 0, duration: 1 }, 1.5);
 
+            // Trazendo de volta o efeito de "desenhar os quadrados", mas focado em poucos elementos (sem travar)
             heroTl.to(".grid-line", {
-                opacity: 0.4,
-                duration: 2,
-                stagger: false,
-                ease: "power2.out"
+                strokeDashoffset: 0,
+                opacity: 0.35,
+                duration: 2.5,
+                stagger: { amount: 0.8 },
+                ease: "power2.inOut"
             }, 0.5);
             
             heroTl.to(".scatter-dot", { opacity: 0.6, duration: 1.5 }, 1.0);
