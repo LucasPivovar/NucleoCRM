@@ -1,23 +1,25 @@
 
 
 document.addEventListener('DOMContentLoaded', () => {
-    const lenis = new Lenis({
-        duration: 1.2,
-        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-        smooth: true,
-    });
+    const isMobileDevice = window.innerWidth <= 1024;
+    
+    let lenis = null;
+    if (!isMobileDevice) {
+        lenis = new Lenis({
+            duration: 1.2,
+            easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+            smooth: true,
+        });
 
-    function raf(time) {
-        lenis.raf(time);
+        function raf(time) {
+            lenis.raf(time);
+            requestAnimationFrame(raf);
+        }
         requestAnimationFrame(raf);
     }
-    requestAnimationFrame(raf);
 
     // GSAP
     gsap.registerPlugin(ScrollTrigger);
-
-
-    const isMobileDevice = window.innerWidth <= 1024;
 
     const gridLinesGroup = document.getElementById('grid-lines');
     const gridDotsGroup = document.getElementById('grid-dots');
@@ -425,7 +427,13 @@ document.addEventListener('DOMContentLoaded', () => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
             const target = document.querySelector(this.getAttribute('href'));
-            if (target) lenis.scrollTo(target);
+            if (target) {
+                if (lenis) {
+                    lenis.scrollTo(target);
+                } else {
+                    target.scrollIntoView({ behavior: 'smooth' });
+                }
+            }
         });
     });
 });

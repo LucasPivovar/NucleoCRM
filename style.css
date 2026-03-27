@@ -1478,12 +1478,12 @@ img {
     .hero .container,
     .solution-wrapper,
     .automations-grid,
-    .problem-grid {
+    .problem-grid,
+    .metrics-grid {
         grid-template-columns: 1fr;
         gap: 3rem;
     }
 
-    .metrics-grid,
     .features-grid,
     .steps-grid {
         grid-template-columns: repeat(2, 1fr);
