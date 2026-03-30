@@ -394,6 +394,14 @@ document.addEventListener('DOMContentLoaded', () => {
             });
 
             updateCarousel(0);
+
+            // MOBILE HERO ENTRANCE SEQUENCE
+            const mobileEntryTl = gsap.timeline({ delay: 0.5 });
+            mobileEntryTl
+                .to(".m-headline", { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" })
+                .to(".m-title", { opacity: 1, y: 0, duration: 1, ease: "back.out(1.7)" }, "-=0.4")
+                .to(".m-subtitle", { opacity: 1, duration: 0.8, ease: "power2.out" }, "-=0.6")
+                .from(".orb", { scale: 0, opacity: 0, duration: 2, stagger: 0.5, ease: "power2.out" }, 0);
         }
 
         if (isDesktop) {
