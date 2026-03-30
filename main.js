@@ -2,7 +2,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     const isMobileDevice = window.innerWidth <= 1024;
-    
+
     let lenis = null;
     if (!isMobileDevice) {
         lenis = new Lenis({
@@ -169,12 +169,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Stage 1: Atom fades out
-        heroTl.to("#atom-anchor", { opacity: 0, duration: 1 }, 0);
 
         // Stage 2: SYNCED RAYS, SWEEP, AND GRID
-        heroTl.to(".hero-sweep-left", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
-        heroTl.to(".hero-sweep-right", { scaleX: 0, duration: 1.8, ease: "power2.inOut" }, 0.5);
+        if (isMobile) {
+            // Circular reveal for mobile to prevent "cutting" feel
+            heroTl.fromTo(".hero-cinematic-wrapper",
+                { clipPath: "circle(100% at 50% 50%)" },
+                { clipPath: "circle(0% at 50% 50%)", duration: 2, ease: "power2.inOut" }, 0.5);
+        } else {
+            // Horizontal sweep for desktop
+            heroTl.fromTo(".hero-cinematic-wrapper",
+                { clipPath: "inset(0% 0% 0% 0%)" },
+                { clipPath: "inset(0% 50% 0% 50%)", duration: 1.8, ease: "power2.inOut" }, 0.5);
+        }
+        heroTl.to(".hero-cinematic-wrapper", { opacity: 0, duration: 0.1 }, 2.3);
 
         // Animação unificada: raios de energia
         heroTl.to(".energy-ray", {
@@ -183,9 +191,9 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 2,
             stagger: { amount: 0.5, from: "random" },
             ease: "power2.out"
-        }, 0.5);
+        }, 1.8);
 
-        heroTl.to(".energy-ray", { opacity: 0, duration: 1.5 }, 1.5);
+        heroTl.to(".energy-ray", { opacity: 0, duration: 1.5 }, 3.5);
 
         // Animação unificada: desenhando a grid (quadrados)
         heroTl.to(".grid-line", {
@@ -193,12 +201,12 @@ document.addEventListener('DOMContentLoaded', () => {
             duration: 3,
             stagger: { amount: 2, from: "random" },
             ease: "power2.inOut"
-        }, 0.5);
+        }, 1.8);
 
         // Animação unificada: pontos nas interseções
-        heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 1.0);
+        heroTl.to(".scatter-dot", { opacity: 0.8, duration: 2, stagger: { amount: 2, from: "random" } }, 2.5);
 
-        heroTl.to("#hero-text-content", { opacity: 1, duration: 1.2, ease: "power3.out" }, 2.2);
+        heroTl.to("#hero-text-content", { opacity: 1, duration: 1.2, ease: "power3.out" }, 3.5);
 
         if (isDesktop) {
             ScrollTrigger.create({
