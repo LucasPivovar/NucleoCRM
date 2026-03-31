@@ -390,11 +390,11 @@ img {
         justify-content: space-between;
         align-items: center;
         padding: 1.2rem 0;
-        color: var(--text-bold);
+        color: #ffffff; /* Requested to be white */
         font-family: var(--font-heading);
         font-weight: 600;
         font-size: 1.1rem;
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
     }
 
     .sidebar-link i {
@@ -973,7 +973,7 @@ img {
     position: relative;
     background: transparent;
     margin-top: 0;
-    padding-top: 80px;
+    padding-top: 20px; /* Reduzido de 80px para aproximar a seção */
     padding-bottom: 80px;
     overflow: visible; /* Changed from hidden to allow gradient bleed */
     z-index: 1;
@@ -989,11 +989,20 @@ img {
     100% { transform: translate(100px, 50px); }
 }
 
+.trust-label {
+    font-size: 0.75rem !important;
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    font-weight: 700;
+    color: rgba(0, 0, 0, 0.8) !important; /* Deixei preto, como pedido */
+    margin-bottom: 1rem;
+}
+
 .logo-carousel {
     position: relative;
     z-index: 10;
     background: transparent;
-    padding: 60px 0;
+    padding: 60px 0 20px 0; /* Reduzido padding-bottom de 60px para 20px */
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
     overflow: hidden;
@@ -1035,7 +1044,7 @@ img {
 }
 
 .social-proof {
-    padding: 120px 0;
+    padding: 20px 0 120px; /* Reduzido padding-top de 120px para aproximar */
     position: relative;
     background: transparent !important;
 }
