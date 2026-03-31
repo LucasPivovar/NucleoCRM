@@ -996,6 +996,42 @@ img {
     padding: 60px 0;
     border-top: 1px solid var(--border);
     border-bottom: 1px solid var(--border);
+    overflow: hidden;
+}
+
+.logo-track-wrapper {
+    position: relative;
+    width: 100%;
+    margin-top: 30px;
+    overflow: hidden;
+}
+
+.logo-track {
+    display: flex;
+    width: calc(180px * 16);
+    animation: scroll-logos 30s linear infinite;
+    align-items: center;
+}
+
+@keyframes scroll-logos {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-180px * 8)); }
+}
+
+.fictional-logo {
+    width: 180px;
+    color: #000;
+    font-family: var(--font-heading);
+    font-weight: 800;
+    font-size: 1.5rem;
+    letter-spacing: -1px;
+    opacity: 0.7;
+    text-align: center;
+    transition: opacity 0.3s;
+}
+
+.fictional-logo:hover {
+    opacity: 1;
 }
 
 .social-proof {
