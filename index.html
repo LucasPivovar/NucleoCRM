@@ -90,6 +90,14 @@
             <div class="hero-sticky-wrapper">
                 <div class="hero-cinematic-wrapper">
                     <video src="assets/cinematic.mp4" autoplay loop muted playsinline class="cinematic-bg"></video>
+                    
+                    <div class="mobile-only cinematic-mobile-overlay">
+                        <canvas id="mobile-particles-canvas"></canvas>
+                        <div class="cinematic-mobile-content">
+                            <img src="assets/logo-nova.png" alt="Núcleo CRM" class="cinematic-logo-mobile">
+                            <h2 class="cinematic-subtitle-mobile">Automação, relacionamento e crescimento</h2>
+                        </div>
+                    </div>
                 </div>
 
 
@@ -103,30 +111,19 @@
                     </svg>
                 </div>
 
-                <!-- NEW: Mobile Animated Background -->
-                <div class="mobile-only hero-mobile-bg">
-                    <div class="orb orb-1"></div>
-                    <div class="orb orb-2"></div>
-                </div>
+
 
                 <!-- SEÇÃO HERO - CONTEÚDO -->
                 <div class="hero-container">
                     <div id="hero-text-content" class="hero-reveal-wrap">
                         <img src="assets/logo-nova.png" alt="Núcleo CRM" class="hero-logo-img">
-                        <!-- Mobile Headline Sequence -->
-                        <div class="mobile-only mobile-headline-sequence">
-                            <span class="m-headline">Sua base de clientes</span>
-                            <span class="m-title">VALE OURO</span>
-                            <span class="m-subtitle">Venda mais para quem já conhece sua marca.</span>
-                        </div>
-                        <!-- Desktop Static Content (Hidden on Mobile via CSS) -->
-                        <div class="desktop-only">
-                            <h2 class="sub-title highlight">Venda mais para quem já comprou</h2>
-                            <p class="subheadline">A plataforma que ajuda e-commerces e empresas a vender mais usando CRM,
-                                automações e campanhas inteligentes.</p>
-                            <p class="hero-support">Pare de depender apenas de novos clientes. <strong>Comece a ativar
-                                    melhor os clientes que você já tem.</strong></p>
-                        </div>
+                        
+                        <h2 class="sub-title highlight">Venda mais para quem já comprou</h2>
+                        <p class="subheadline">A plataforma que ajuda e-commerces e empresas a vender mais usando CRM,
+                            automações e campanhas inteligentes.</p>
+                        <p class="hero-support">Pare de depender apenas de novos clientes. <strong>Comece a ativar
+                                melhor os clientes que você já tem.</strong></p>
+                        
                         <div class="hero-btns">
                             <a href="#contato" class="btn btn-primary">Solicitar agendamento</a>
                             <a href="#como-funciona" class="btn btn-secondary">Ver como funciona</a>
@@ -143,7 +140,7 @@
         </section>
 
         <!-- SEÇÃO LOGO CAROUSEL (Infinite Scroll) -->
-        <section class="logo-carousel reveal">
+        <section class="logo-carousel">
             <div class="container">
                 <p class="trust-label align-center">Empresas que confiam na Núcleo CRM</p>
                 <div class="logo-track-wrapper">
@@ -176,57 +173,60 @@
         </section>
 
 
-        <!-- SEÇÃO PROVA SOCIAL -->
-        <section class="social-proof">
-            <div class="container">
-                <h2 class="reveal social-proof-title">Empresas já estão crescendo com a Núcleo CRM</h2>
-                <div class="social-text">
-                    <p>Todos os dias empresas estão descobrindo que a maior oportunidade de crescimento não está em
-                        novos clientes… mas sim na base de clientes que elas já conquistaram. Com a Núcleo CRM, essa
-                        base passa a trabalhar a favor do seu crescimento.</p>
+        <!-- UNIFIED PURPLE MESH AREA (Social Proof + Problem) -->
+        <div class="unified-mesh-area">
+            <!-- SEÇÃO PROVA SOCIAL -->
+            <section class="social-proof">
+                <div class="container">
+                    <h2 class="reveal social-proof-title">Empresas já estão crescendo com a Núcleo CRM</h2>
+                    <div class="social-text">
+                        <p>Todos os dias empresas estão descobrindo que a maior oportunidade de crescimento não está em
+                            novos clientes… mas sim na base de clientes que elas já conquistaram. Com a Núcleo CRM, essa
+                            base passa a trabalhar a favor do seu crescimento.</p>
+                    </div>
+                    <div class="metrics-grid">
+                        <div class="metric-card reveal">
+                            <span class="metric-value">+30</span>
+                            <p class="metric-label">empresas usando a plataforma</p>
+                        </div>
+                        <div class="metric-card reveal">
+                            <span class="metric-value">+50k</span>
+                            <p class="metric-label">comunicações enviadas automaticamente</p>
+                        </div>
+                        <div class="metric-card reveal">
+                            <span class="metric-value">+R$140k</span>
+                            <p class="metric-label">em vendas geradas com automações</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="metrics-grid">
-                    <div class="metric-card reveal">
-                        <span class="metric-value">+30</span>
-                        <p class="metric-label">empresas usando a plataforma</p>
-                    </div>
-                    <div class="metric-card reveal">
-                        <span class="metric-value">+50k</span>
-                        <p class="metric-label">comunicações enviadas automaticamente</p>
-                    </div>
-                    <div class="metric-card reveal">
-                        <span class="metric-value">+R$140k</span>
-                        <p class="metric-label">em vendas geradas com automações</p>
-                    </div>
-                </div>
-            </div>
-        </section>
+            </section>
 
-        <!-- SEÇÃO PROBLEMA -->
-        <section class="problem section-padding">
-            <div class="container">
-                <div class="section-header">
-                    <h2 class="reveal">A maioria das empresas perde vendas todos os dias.</h2>
-                </div>
-                <div class="problem-grid">
-                    <div class="problem-content reveal">
-                        <p>Clientes compram uma vez… e depois simplesmente desaparecem. Não porque não gostaram da sua
-                            marca, mas porque <strong>ninguém lembra eles de comprar novamente.</strong></p>
-                        <ul class="problem-list">
-                            <li><i class="fas fa-times-circle"></i> Sem campanhas.</li>
-                            <li><i class="fas fa-times-circle"></i> Sem relacionamento.</li>
-                            <li><i class="fas fa-times-circle"></i> Sem automação.</li>
-                        </ul>
+            <!-- SEÇÃO PROBLEMA -->
+            <section class="problem section-padding">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="reveal">A maioria das empresas perde vendas todos os dias.</h2>
                     </div>
-                    <div class="problem-comparison reveal">
-                        <p class="comparison-title">Enquanto isso, empresas que usam dados e automação conseguem:</p>
-                        <div class="check-item"><i class="fas fa-check-circle"></i> Aumentar recompra</div>
-                        <div class="check-item"><i class="fas fa-check-circle"></i> Fidelizar clientes</div>
-                        <div class="check-item"><i class="fas fa-check-circle"></i> Vender mais com a mesma base</div>
+                    <div class="problem-grid">
+                        <div class="problem-content reveal">
+                            <p>Clientes compram uma vez… e depois simplesmente desaparecem. Não porque não gostaram da sua
+                                marca, mas porque <strong>ninguém lembra eles de comprar novamente.</strong></p>
+                            <ul class="problem-list">
+                                <li><i class="fas fa-times-circle"></i> Sem campanhas.</li>
+                                <li><i class="fas fa-times-circle"></i> Sem relacionamento.</li>
+                                <li><i class="fas fa-times-circle"></i> Sem automação.</li>
+                            </ul>
+                        </div>
+                        <div class="problem-comparison reveal">
+                            <p class="comparison-title">Enquanto isso, empresas que usam dados e automação conseguem:</p>
+                            <div class="check-item"><i class="fas fa-check-circle"></i> Aumentar recompra</div>
+                            <div class="check-item"><i class="fas fa-check-circle"></i> Fidelizar clientes</div>
+                            <div class="check-item"><i class="fas fa-check-circle"></i> Vender mais com a mesma base</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </section>
+            </section>
+        </div>
 
         <!-- SEÇÃO SOLUÇÃO -->
         <section class="solution section-padding" id="solucao">
