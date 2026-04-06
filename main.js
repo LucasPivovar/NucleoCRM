@@ -279,12 +279,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const scrollTrap = document.getElementById('scrollTrapezoid');
             if (scrollTrap) {
                 gsap.fromTo(scrollTrap, { top: '5vh' }, {
-                    top: '40vh',
+                    top: '30vh',
                     ease: 'none',
                     scrollTrigger: {
                         trigger: '.features-carousel',
                         start: 'top top',
-                        end: 'bottom bottom',
+                        end: 'bottom 90%',
                         scrub: true,
                     }
                 });
@@ -462,9 +462,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 .from(".cinematic-subtitle-mobile", { opacity: 0, y: 20, duration: 1, ease: "power3.out" }, 0.6);
         }
 
-        if (isDesktop) {
-            gsap.set("#hero-text-content", { opacity: 0 });
-        }
+        gsap.set("#hero-text-content", { opacity: 0 });
     });
 
     // ANIMAÇÕES GLOBAIS
